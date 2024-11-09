@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Intan!</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <!-- Halaman 1 - Pembukaan -->
+    <div class="page" id="page1">
+        <h1>Selamat Datang!</h1>
+        <p>Inilah kado spesial untuk Intan Ayu Noverita.</p>
+        <button onclick="nextPage(2)">Buka Halaman Pertama Kado</button>
+    </div>
+
+    <!-- Halaman 2 - Ucapan Personal -->
+    <div class="page" id="page2">
+        <h2>Semoga hari ini penuh kebahagiaan!</h2>
+        <p>Umurmu genap 20 tahun pada 14 November 2024. Selamat ulang tahun!</p>
+        <button onclick="nextPage(3)">Lanjutkan</button>
+    </div>
+
+    <!-- Halaman 3 - Surprise Pop-Up -->
+    <div class="page" id="page3">
+        <img src="images/kado.png" alt="Kado" class="gift" onclick="showSurprise()">
+        <p>Klik kado ini untuk melihat kejutan!</p>
+        <button style="display:none;" id="continueButton" onclick="nextPage(4)">Lanjutkan</button>
+    </div>
+
+    <!-- Halaman 4 - Halaman Puzzle Mini -->
+    <div class="page" id="page4">
+        <h3>Pertanyaan untuk Intan</h3>
+        <p>Apa yang paling membuatmu bahagia hari ini?</p>
+        <input type="text" id="answer" placeholder="Jawabanmu...">
+        <button onclick="submitAnswer()">Lanjutkan</button>
+    </div>
+
+    <!-- Halaman 5 - Efek Gambar Polaroid -->
+    <div class="page" id="page5">
+        <div class="polaroid">
+            <img src="images/moment.jpg" alt="Kenangan Manis">
+            <p>Kenangan manis bersama.</p>
+        </div>
+        <button onclick="nextPage(6)">Lanjutkan</button>
+    </div>
+
+    <!-- Halaman 6 - Kado Terbuka -->
+    <div class="page" id="page6">
+        <div class="envelope" onclick="openGift()">
+            <p>Buka kadomu!</p>
+        </div>
+        <button style="display:none;" id="finalButton" onclick="nextPage(7)">Lanjutkan</button>
+    </div>
+
+    <!-- Halaman 7 - Ucapan Akhir -->
+    <div class="page" id="page7">
+        <h2>Terima Kasih, Intan!</h2>
+        <p>Semoga kamu mendapatkan semua kebahagiaan dan keberhasilan yang kamu impikan.</p>
+        <p>Selamat ulang tahun!</p>
+        <button onclick="window.location.href='index.html'">Selesai</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
