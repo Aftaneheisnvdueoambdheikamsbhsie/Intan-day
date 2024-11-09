@@ -1,7 +1,8 @@
 let currentPage = 1;
 const audio = document.getElementById('backsound');
-const video = document.getElementById('surpriseVideo');
+let video;
 
+// Pastikan audio diputar saat halaman dimuat
 document.addEventListener("DOMContentLoaded", function() {
     showPage(1);
     playMusic();
@@ -9,14 +10,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function showPage(pageNumber) {
     document.querySelectorAll(".page").forEach(page => page.style.display = "none");
-    document.getElementById(`page${pageNumber}`).style.display = "block";
-
-    // Memutar/menghentikan audio dan video sesuai halaman
-    if (pageNumber === 3) {
-        video.play().catch(error => {
-            console.error("Video tidak bisa diputar otomatis. Silakan izinkan video di browser Anda.", error);
-        });
+    const targetPage = document.getElementById(`page${pageNumber}`);
+    
+    if (targetPage) {
+        targetPage.style.display = "block";
     } else {
+        console.error(`Halaman dengan ID "page${pageNumber}" tidak ditemukan.`);
+    }
+
+    // Mengatur video jika ada di halaman 5
+    if (pageNumber === 5) {
+        video = document.querySelector('#page5 video');
+        if (video) {
+            video.play().catch(error => {
+                console.error("Video tidak bisa diputar otomatis. Silakan izinkan video di browser Anda.", error);
+            });
+        }
+    } else if (video) {
+        // Berhenti memutar video jika bukan halaman 5
         video.pause();
         video.currentTime = 0;
     }
@@ -45,15 +56,21 @@ window.addEventListener('beforeunload', () => {
     stopMusic();
 });
 
-// Menjeda audio jika pengguna beralih ke tab lain
+// Menjeda audio dan video jika pengguna beralih ke tab lain
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
         audio.pause(); // Menjeda musik saat pengguna beralih tab
-        video.pause(); // Menjeda video
+        if (video) {
+            video.pause(); // Menjeda video jika ada
+        }
     } else {
-        audio.play(); // Melanjutkan musik saat pengguna kembali
-        if (currentPage === 3) {
-            video.play(); // Melanjutkan video jika pada halaman 3
+        audio.play().catch(error => {
+            console.error("Musik tidak bisa diputar otomatis. Silakan izinkan audio di browser Anda.", error);
+        }); // Melanjutkan musik saat pengguna kembali
+        if (currentPage === 5 && video) {
+            video.play().catch(error => {
+                console.error("Video tidak bisa diputar otomatis. Silakan izinkan video di browser Anda.", error);
+            }); // Melanjutkan video jika pada halaman 5
         }
     }
 });
