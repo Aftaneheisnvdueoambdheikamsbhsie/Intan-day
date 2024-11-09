@@ -11,11 +11,12 @@ function showPage(pageNumber) {
     const targetPage = document.getElementById(`page${pageNumber}`);
     if (targetPage) {
         targetPage.style.display = "block";
+        currentPage = pageNumber;
     } else {
         console.error(`Halaman ${pageNumber} tidak ditemukan.`);
     }
 
-    // Memulai atau menghentikan video jika berada di halaman dengan video
+    // Memutar video hanya di halaman 5
     if (pageNumber === 5) {
         const videos = document.querySelectorAll(`#page${pageNumber} video`);
         videos.forEach(video => {
@@ -33,8 +34,7 @@ function showPage(pageNumber) {
 }
 
 function nextPage(pageNumber) {
-    currentPage = pageNumber;
-    showPage(currentPage);
+    showPage(pageNumber);
 }
 
 function showSurprise() {
@@ -45,6 +45,16 @@ function showSurprise() {
         console.log("Tombol 'continueButton' ditampilkan.");
     } else {
         console.error("Tombol 'continueButton' tidak ditemukan.");
+    }
+}
+
+function openGift() {
+    const finalButton = document.getElementById("finalButton");
+    if (finalButton) {
+        finalButton.style.display = "inline";
+        console.log("Tombol 'finalButton' ditampilkan.");
+    } else {
+        console.error("Tombol 'finalButton' tidak ditemukan.");
     }
 }
 
@@ -71,7 +81,7 @@ document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
         audio.pause(); // Menjeda musik saat pengguna beralih tab
     } else {
-        if (currentPage !== 5) { // Hanya lanjutkan musik jika tidak di halaman 5 dengan video
+        if (currentPage !== 5) { // Hanya lanjutkan musik jika tidak di halaman 5
             audio.play().catch(error => {
                 console.error("Musik tidak bisa diputar otomatis saat kembali ke tab.", error);
             });
