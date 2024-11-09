@@ -37,42 +37,44 @@
     </div>
 
     <!-- Halaman 5 - Efek Gambar Polaroid -->
-  <div class="page" id="page5">
+<div class="page" id="page5">
     <div class="polaroid-gallery">
-    <div class="polaroid">
-        <img src="kita1.jpg" alt="Foto 1">
-        <p>Memori 1</p>
-    </div>
-    <div class="polaroid">
-        <img src="kita2.jpg" alt="Foto 2">
-        <p>Memori 2</p>
-    </div>
-    <div class="polaroid">
-        <img src="kita3.HEIC" alt="Foto 3">
-        <p>Memori 3</p>
-    </div>
-    <div class="polaroid">
-        <img src="kita4.webp" alt="Foto 4">
-        <p>Memori 4</p>
-    </div>
         <div class="polaroid">
-        <video id="surpriseVideo" width="320" height="240" autoplay muted loop>
-         <source src="Vid2.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-    </div>
+            <img src="kita1.jpg" alt="Foto 1">
+            <p>Memori 1</p>
+        </div>
         <div class="polaroid">
-        <video id="surpriseVideo" width="320" height="240" autoplay muted loop>
-            <source src="VID2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+            <img src="kita2.jpg" alt="Foto 2">
+            <p>Memori 2</p>
+        </div>
+        <div class="polaroid">
+            <img src="kita1.jpg" alt="Foto 3">
+            <p>Memori 3</p>
+        </div>
+        <div class="polaroid">
+            <img src="kita4.webp" alt="Foto 4">
+            <p>Memori 4</p>
+        </div>
+        <!-- Video polaroid pertama -->
+        <div class="polaroid">
+            <video class="surprise-video" autoplay muted loop>
+                <source src="Vid2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>Video Kejutan 1</p>
+        </div>
+        <!-- Video polaroid kedua -->
+        <div class="polaroid">
+            <video class="surprise-video" autoplay muted loop>
+                <source src="VID2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>Video Kejutan 2</p>
         </div>
     </div>
-        <p>Kejutan video untukmu!</p>
-        <button onclick="nextPage(6)">Lanjutkan</button>
-    </div>
-    <!-- Tambahkan lebih banyak polaroid sesuai kebutuhan -->
-  </div>
+    <p>Kejutan video untukmu!</p>
+    <button onclick="nextPage(6)">Lanjutkan</button>
+</div>
     <!-- Halaman 6 - Kado Terbuka -->
     <div class="page" id="page6">
         <div class="envelope" onclick="openGift()">
