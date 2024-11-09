@@ -52,7 +52,7 @@ function openGift() {
     document.getElementById("finalButton").style.display = "inline";
 }
 // Seleksi elemen audio di halaman (gantilah 'backsound.mp3' dengan URL lagu yang Anda gunakan)
-const audio = new Audio('backsound.mp3');
+const audio = new Audio('backsound.m4a');
 audio.loop = true; // Memutar musik terus menerus
 
 // Fungsi untuk memulai pemutaran musik
