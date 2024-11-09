@@ -53,15 +53,68 @@ button:hover {
     margin-top: 20px;
 }
 
-.polaroid img {
-    width: 200px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-    transform: rotate(-2deg);
-    transition: transform 0.5s;
+/* Styling untuk galeri polaroid */
+.polaroid-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #f0f0f0;
 }
 
-.polaroid:hover img {
-    transform: rotate(2deg);
+/* Styling untuk setiap elemen polaroid */
+.polaroid {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: rotate(calc(var(--rotate-angle) * 1deg));
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.polaroid:hover {
+    transform: scale(1.05) rotate(calc(var(--rotate-angle) * 1deg));
+}
+
+/* Styling gambar dalam polaroid */
+.polaroid img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+/* Styling teks dalam polaroid */
+.polaroid p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Memberikan rotasi acak pada tiap polaroid */
+.polaroid:nth-child(odd) {
+    --rotate-angle: -3;
+}
+
+.polaroid:nth-child(even) {
+    --rotate-angle: 3;
+}
+.polaroid {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Confetti */
