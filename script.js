@@ -1,12 +1,25 @@
 let currentPage = 1;
+const audio = document.getElementById('backsound');
+const video = document.getElementById('surpriseVideo');
 
 document.addEventListener("DOMContentLoaded", function() {
     showPage(1);
+    playMusic();
 });
 
 function showPage(pageNumber) {
     document.querySelectorAll(".page").forEach(page => page.style.display = "none");
     document.getElementById(`page${pageNumber}`).style.display = "block";
+
+    // Memutar/menghentikan audio dan video sesuai halaman
+    if (pageNumber === 3) {
+        video.play().catch(error => {
+            console.error("Video tidak bisa diputar otomatis. Silakan izinkan video di browser Anda.", error);
+        });
+    } else {
+        video.pause();
+        video.currentTime = 0;
+    }
 }
 
 function nextPage(pageNumber) {
@@ -14,48 +27,7 @@ function nextPage(pageNumber) {
     showPage(currentPage);
 }
 
-function startSurprise() {
-    showConfetti();
-    nextPage(2);
-}
-
-function showConfetti() {
-    const confettiContainer = document.getElementById("confettiContainer");
-    confettiContainer.style.display = "block";
-    for (let i = 0; i < 100; i++) {
-        const confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.style.left = `${Math.random() * 100}%`;
-        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        confettiContainer.appendChild(confetti);
-    }
-    setTimeout(() => confettiContainer.style.display = "none", 3000);
-}
-
-function showSurprise() {
-    document.querySelector(".gift").classList.add("explode");
-    document.getElementById("continueButton").style.display = "inline";
-}
-
-function submitAnswer() {
-    let answer = document.getElementById("answer").value;
-    if (answer) {
-        alert(`Terima kasih atas jawabanmu, Intan!`);
-        nextPage(5);
-    } else {
-        alert("Jangan lupa isi jawaban dulu!");
-    }
-}
-
-function openGift() {
-    document.querySelector(".envelope").classList.add("open");
-    document.getElementById("finalButton").style.display = "inline";
-}
-// Seleksi elemen audio di halaman (gantilah 'backsound.mp3' dengan URL lagu yang Anda gunakan)
-const audio = new Audio('backsound.m4a');
-audio.loop = true; // Memutar musik terus menerus
-
-// Fungsi untuk memulai pemutaran musik
+// Fungsi untuk memutar musik
 function playMusic() {
     audio.play().catch(error => {
         console.error("Musik tidak bisa diputar otomatis. Silakan izinkan audio di browser Anda.", error);
@@ -68,22 +40,20 @@ function stopMusic() {
     audio.currentTime = 0; // Mengatur kembali ke awal
 }
 
-// Event listener untuk memulai musik ketika halaman pertama dibuka
-window.addEventListener('load', () => {
-    playMusic();
-});
-
 // Event listener untuk menghentikan musik ketika pengguna keluar dari semua halaman
 window.addEventListener('beforeunload', () => {
     stopMusic();
 });
 
-// Optional: Menjeda musik jika pengguna beralih ke tab lain dan melanjutkan saat kembali
+// Menjeda audio jika pengguna beralih ke tab lain
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
         audio.pause(); // Menjeda musik saat pengguna beralih tab
+        video.pause(); // Menjeda video
     } else {
         audio.play(); // Melanjutkan musik saat pengguna kembali
+        if (currentPage === 3) {
+            video.play(); // Melanjutkan video jika pada halaman 3
+        }
     }
 });
-
