@@ -56,13 +56,20 @@
         <p>Memori 4</p>
     </div>
         <div class="polaroid">
-        <img src="Vid1.mp4" alt="Foto 5">
-        <p>Memori video</p>
+        <video id="surpriseVideo" width="320" height="240" autoplay muted loop>
+         <source src="Vid2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
     </div>
         <div class="polaroid">
-        <img src="VID2.mp4" alt="Foto 6">
-        <p>Memori video 2</p>
+        <video id="surpriseVideo" width="320" height="240" autoplay muted loop>
+            <source src="VID2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         </div>
+    </div>
+        <p>Kejutan video untukmu!</p>
+        <button onclick="nextPage(4)">Lanjutkan</button>
     </div>
     <!-- Tambahkan lebih banyak polaroid sesuai kebutuhan -->
   </div>
@@ -81,10 +88,12 @@
         <p>Selamat ulang tahun!</p>
         <button onclick="window.location.href='Birthday.html'">Selesai</button>
     </div>
-<audio id="backsound" autoplay loop>
-    <source src="backsound.m4a" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+
+
+    <audio id="backsound" autoplay loop>
+        <source src="backsound.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script src="script.js"></script>
 </body>
