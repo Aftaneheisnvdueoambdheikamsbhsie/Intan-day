@@ -23,7 +23,7 @@
 
     <!-- Halaman 3 - Surprise Pop-Up -->
     <div class="page" id="page3">
-        <img src="images/kado.png" alt="Kado" class="gift" onclick="showSurprise()">
+        <img src="kado.jpeg" alt="Kado" class="gift" onclick="showSurprise()">
         <p>Klik kado ini untuk melihat kejutan!</p>
         <button style="display:none;" id="continueButton" onclick="nextPage(4)">Lanjutkan</button>
     </div>
@@ -37,13 +37,34 @@
     </div>
 
     <!-- Halaman 5 - Efek Gambar Polaroid -->
-    <div class="page" id="page5">
-        <div class="polaroid">
-            <img src="images/moment.jpg" alt="Kenangan Manis">
-            <p>Kenangan manis bersama.</p>
-        </div>
-        <button onclick="nextPage(6)">Lanjutkan</button>
+    <div class="polaroid-gallery">
+    <div class="polaroid">
+        <img src="kita1.jpg" alt="Foto 1">
+        <p>Memori 1</p>
     </div>
+    <div class="polaroid">
+        <img src="kita2.jpg" alt="Foto 2">
+        <p>Memori 2</p>
+    </div>
+    <div class="polaroid">
+        <img src="kita3.HEIC" alt="Foto 3">
+        <p>Memori 3</p>
+    </div>
+    <div class="polaroid">
+        <img src="kita4.webp" alt="Foto 4">
+        <p>Memori 4</p>
+    </div>
+        <div class="polaroid">
+        <img src="Vid1.mp4" alt="Foto 4">
+        <p>Memori video</p>
+    </div>
+        <div class="polaroid">
+        <img src="VID2.mp4" alt="Foto 4">
+        <p>Memori video 2</p>
+    </div>
+    <!-- Tambahkan lebih banyak polaroid sesuai kebutuhan -->
+</div>
+
 
     <!-- Halaman 6 - Kado Terbuka -->
     <div class="page" id="page6">
@@ -58,8 +79,12 @@
         <h2>Terima Kasih, Intan!</h2>
         <p>Semoga kamu mendapatkan semua kebahagiaan dan keberhasilan yang kamu impikan.</p>
         <p>Selamat ulang tahun!</p>
-        <button onclick="window.location.href='index.html'">Selesai</button>
+        <button onclick="window.location.href='Birthday.html'">Selesai</button>
     </div>
+<audio id="backsound" autoplay loop>
+    <source src="backsound.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
     <script src="script.js"></script>
 </body>
