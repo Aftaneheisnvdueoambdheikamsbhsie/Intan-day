@@ -63,18 +63,34 @@ button:hover {
     background-color: #f0f0f0;
 }
 
-/* Styling untuk setiap elemen polaroid */
 .polaroid {
     background: #fff;
     border: 1px solid #ddd;
     padding: 10px;
-    width: 150px;
+    width: 200px; /* Sesuaikan ukuran polaroid */
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transform: rotate(calc(var(--rotate-angle) * 1deg));
     transition: transform 0.3s;
     position: relative;
+    opacity: 1;
+    animation: fadeIn 1s ease-in-out forwards;
 }
+
+.polaroid video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Tambahkan opacity untuk memastikan video terlihat */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 
 .polaroid:hover {
     transform: scale(1.05) rotate(calc(var(--rotate-angle) * 1deg));
@@ -106,12 +122,6 @@ button:hover {
 .polaroid {
     opacity: 0;
     animation: fadeIn 1s ease-in-out forwards;
-}
-.polaroid video {
-    width: 100%; /* Menyesuaikan lebar video dengan polaroid */
-    height: auto; /* Menjaga rasio video */
-    object-fit: cover; /* Memenuhi area video tanpa distorsi */
-    border-radius: 8px; /* Memberikan sudut tumpul pada video */
 }
 
 @keyframes fadeIn {
