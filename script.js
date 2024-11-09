@@ -1,8 +1,6 @@
 let currentPage = 1;
 const audio = document.getElementById('backsound');
-let video;
 
-// Pastikan audio diputar saat halaman dimuat
 document.addEventListener("DOMContentLoaded", function() {
     showPage(1);
     playMusic();
@@ -11,31 +9,43 @@ document.addEventListener("DOMContentLoaded", function() {
 function showPage(pageNumber) {
     document.querySelectorAll(".page").forEach(page => page.style.display = "none");
     const targetPage = document.getElementById(`page${pageNumber}`);
-    
     if (targetPage) {
         targetPage.style.display = "block";
     } else {
-        console.error(`Halaman dengan ID "page${pageNumber}" tidak ditemukan.`);
+        console.error(`Halaman ${pageNumber} tidak ditemukan.`);
     }
 
-    // Mengatur video jika ada di halaman 5
+    // Memulai atau menghentikan video jika berada di halaman dengan video
     if (pageNumber === 5) {
-        video = document.querySelector('#page5 video');
-        if (video) {
+        const videos = document.querySelectorAll(`#page${pageNumber} video`);
+        videos.forEach(video => {
             video.play().catch(error => {
                 console.error("Video tidak bisa diputar otomatis. Silakan izinkan video di browser Anda.", error);
             });
-        }
-    } else if (video) {
-        // Berhenti memutar video jika bukan halaman 5
-        video.pause();
-        video.currentTime = 0;
+        });
+    } else {
+        const allVideos = document.querySelectorAll("video");
+        allVideos.forEach(video => {
+            video.pause();
+            video.currentTime = 0;
+        });
     }
 }
 
 function nextPage(pageNumber) {
     currentPage = pageNumber;
     showPage(currentPage);
+}
+
+function showSurprise() {
+    document.querySelector(".gift").classList.add("explode");
+    const continueButton = document.getElementById("continueButton");
+    if (continueButton) {
+        continueButton.style.display = "inline";
+        console.log("Tombol 'continueButton' ditampilkan.");
+    } else {
+        console.error("Tombol 'continueButton' tidak ditemukan.");
+    }
 }
 
 // Fungsi untuk memutar musik
@@ -56,21 +66,15 @@ window.addEventListener('beforeunload', () => {
     stopMusic();
 });
 
-// Menjeda audio dan video jika pengguna beralih ke tab lain
+// Menjeda audio jika pengguna beralih ke tab lain
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
         audio.pause(); // Menjeda musik saat pengguna beralih tab
-        if (video) {
-            video.pause(); // Menjeda video jika ada
-        }
     } else {
-        audio.play().catch(error => {
-            console.error("Musik tidak bisa diputar otomatis. Silakan izinkan audio di browser Anda.", error);
-        }); // Melanjutkan musik saat pengguna kembali
-        if (currentPage === 5 && video) {
-            video.play().catch(error => {
-                console.error("Video tidak bisa diputar otomatis. Silakan izinkan video di browser Anda.", error);
-            }); // Melanjutkan video jika pada halaman 5
+        if (currentPage !== 5) { // Hanya lanjutkan musik jika tidak di halaman 5 dengan video
+            audio.play().catch(error => {
+                console.error("Musik tidak bisa diputar otomatis saat kembali ke tab.", error);
+            });
         }
     }
 });
