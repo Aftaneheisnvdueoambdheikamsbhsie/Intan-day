@@ -107,6 +107,12 @@ button:hover {
     opacity: 0;
     animation: fadeIn 1s ease-in-out forwards;
 }
+.polaroid video {
+    width: 100%; /* Menyesuaikan lebar video dengan polaroid */
+    height: auto; /* Menjaga rasio video */
+    object-fit: cover; /* Memenuhi area video tanpa distorsi */
+    border-radius: 8px; /* Memberikan sudut tumpul pada video */
+}
 
 @keyframes fadeIn {
     from {
