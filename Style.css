@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: #f2f2f2;
+}
+
+.page {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 1s ease forwards;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+.gift, .envelope {
+    width: 100px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.polaroid img {
+    width: 200px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    transform: rotate(-2deg);
+    transition: transform 0.5s;
+}
+
+.polaroid:hover img {
+    transform: rotate(2deg);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
