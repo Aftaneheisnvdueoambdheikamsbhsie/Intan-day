@@ -6,7 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
-    background-color: #f2f2f2;
+    background-color: #ffe6e6;
 }
 
 .page {
@@ -21,7 +21,30 @@ button {
     margin-top: 20px;
     font-size: 16px;
     cursor: pointer;
-    animation: pulse 2s infinite;
+    border: none;
+    background-color: #ff85a1;
+    color: white;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.title {
+    font-size: 2em;
+    color: #ff4d6d;
+}
+
+.sweet-text {
+    font-size: 1.5em;
+    color: #ff6f91;
+    animation: typing 2s steps(30, end), blink-caret 0.5s step-end infinite;
+}
+
+.pastel-text {
+    color: #5f9ea0;
 }
 
 .gift, .envelope {
@@ -41,12 +64,29 @@ button {
     transform: rotate(2deg);
 }
 
+/* Confetti */
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    display: none;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #ff85a1; }
 }
