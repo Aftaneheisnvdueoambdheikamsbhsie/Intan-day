@@ -51,3 +51,11 @@ function openGift() {
     document.querySelector(".envelope").classList.add("open");
     document.getElementById("finalButton").style.display = "inline";
 }
+function toggleBacksound() {
+    const audio = document.getElementById("backsound");
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+}
